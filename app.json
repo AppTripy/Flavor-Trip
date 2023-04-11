@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FlavorTrip",
-    "slug": "FlavorTrip",
+    "name": "Flavor-Trip-expo",
+    "slug": "Flavor-Trip-expo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
