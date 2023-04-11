@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-const logo = require('../../logo.png')
+const logo = require('../media/logo.png')
 
 const Container = styled.div`
   height: 100vh;
