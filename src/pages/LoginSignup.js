@@ -20,7 +20,7 @@ export default function LoginSignup() {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="Username"
           value={email}
           onChangeText={setEmail}
         />
@@ -31,6 +31,13 @@ export default function LoginSignup() {
           secureTextEntry
           onChangeText={setPassword}
         />
+        { !isLogin && <TextInput
+          style={styles.input}
+          placeholder="Re-enter Password"
+          value={password}
+          secureTextEntry
+          onChangeText={setPassword}
+        /> }
       </View>
       <TouchableOpacity style={styles.button} onPress={handleAuth}>
         <Text style={styles.buttonText}>{isLogin ? 'Login' : 'Signup'}</Text>
