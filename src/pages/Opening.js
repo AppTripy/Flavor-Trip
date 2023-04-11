@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-
+const logo = require('../../logo.png')
 
 const Container = styled.div`
   height: 100vh;
@@ -24,7 +24,8 @@ const Opening = (props) => {
   if (show === true) {
     return (
       <Container>
-        Animation...
+        <img src={logo} />
+
       </Container>
     )
   }
