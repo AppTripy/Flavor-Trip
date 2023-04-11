@@ -4,8 +4,9 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <div>
+        <div style={{height:'200' , width:'100vw' , fontWeight:'700' , fontSize:'50px' , textAlign:'center'}}>Flavor Trip</div>
+      </div>
     </View>
   );
 }
