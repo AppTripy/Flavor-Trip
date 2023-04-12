@@ -1,6 +1,10 @@
 import styled from "styled-components"
 import { useSelector  } from "react-redux";
 
+import RecipeView from './RecipeView'
+import ProfilView from './ProfilView'
+import SearchView from './SearchView'
+import SavedView from './SavedView'
 
 const Container = styled.div`
   width: 100%;
@@ -19,7 +23,10 @@ const MainView = () => {
 
   return (
     <Container>
-      {view}
+    { (view === "recipe") && <RecipeView /> }
+    { (view === "saved") && <SavedView /> }
+    { (view === "search") && <SearchView /> }
+    { (view === "profil") && <ProfilView /> }
     </Container>
   )
 }
