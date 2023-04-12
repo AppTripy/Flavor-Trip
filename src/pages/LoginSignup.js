@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -27,9 +27,11 @@ const LoginSignup = (props) => {
       // await Keychain.setGenericPassword(email, password);
     }
     else if (res.status === 201) {
+      setBadLogin(true)
       console.log('WRONG USERNAME OR PWD')
     }
     else if (res.status === 202) {
+      setBadLogin(true)
       console.log('USERNAME DONT EXIST')
     }
   }
@@ -55,9 +57,13 @@ const LoginSignup = (props) => {
       .then((res)=> { isLogin ? handleLog(res) : handleReg(res)  })
       .catch(function(err){
         console.log('Error signing in!');
-        setBadLogin(true)
       })
   }
+
+  // Make red text dissapear when switching to sign up
+  useEffect(()=>{
+    setBadLogin(false)
+  },[isLogin])
 
   return (
     <View style={styles.container}>
