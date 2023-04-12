@@ -3,7 +3,13 @@ import LoginSignup from './src/pages/LoginSignup'
 import Opening from './src/pages/Opening'
 import * as Keychain from 'react-native-keychain';
 import Home from './src/pages/Home';
+import styled from 'styled-components';
 
+const Container = styled.div`
+  width: 100vw;
+  height: 100%;
+  
+`
 
 const LogUser = async () => {
   try {
@@ -31,11 +37,11 @@ export default function App() {
   // }
   
   return (
-    <>
-      { showOpening && <Opening set={setShowOpening} /> }
-      { !showOpening && showLogReg && <LoginSignup set={setShowLogReg} /> }
-      { !showLogReg && <Home /> }
-    </>
+    <Container>
+      {/* { showOpening && <Opening set={setShowOpening} /> }
+      { !showOpening && showLogReg && <LoginSignup set={setShowLogReg} /> } */}
+      { showLogReg && <Home /> }
+    </Container>
   );
 }
 
