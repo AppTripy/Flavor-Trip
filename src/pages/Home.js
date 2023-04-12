@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
-
+import Navbar from "../components/navbar/Navbar";
+import MainView from "../components/mainview/MainView";
+import { useState } from "react";
 const Container = styled.div`
   height: 100vh;
   width: 100%;
@@ -9,10 +10,10 @@ const Container = styled.div`
 const Home = () => {
 
 
-
   return (
     <Container>
-      <Navbar />
+      <MainView  />
+      <Navbar  />
     </Container>
   )
 }

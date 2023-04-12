@@ -4,6 +4,9 @@ import Opening from './src/pages/Opening'
 import * as Keychain from 'react-native-keychain';
 import Home from './src/pages/Home';
 import styled from 'styled-components';
+import {Provider} from 'react-redux';
+import {store} from './src/redux/store';
+
 
 const Container = styled.div`
   width: 100vw;
@@ -37,11 +40,13 @@ export default function App() {
   // }
   
   return (
-    <Container>
-      {/* { showOpening && <Opening set={setShowOpening} /> }
-      { !showOpening && showLogReg && <LoginSignup set={setShowLogReg} /> } */}
-      { showLogReg && <Home /> }
-    </Container>
+    <Provider store={store}>
+      <Container>
+        {/* { showOpening && <Opening set={setShowOpening} /> }
+        { !showOpening && showLogReg && <LoginSignup set={setShowLogReg} /> } */}
+        { showLogReg && <Home /> }
+      </Container>
+    </Provider>
   );
 }
 
