@@ -26,9 +26,9 @@ export default function App() {
   const [ showOpening , setShowOpening ] = useState(true)
   const [ showLogReg , setShowLogReg ] = useState(true)
 
-  if (showOpening === true) {
-    LogUser()
-  }
+  // if (showOpening === true) {
+  //   LogUser()
+  // }
   
   return (
     <>
