@@ -2,6 +2,8 @@ import { useState } from 'react';
 import LoginSignup from './src/pages/LoginSignup'
 import Opening from './src/pages/Opening'
 import * as Keychain from 'react-native-keychain';
+import Home from './src/pages/Home';
+
 
 const LogUser = async () => {
   try {
@@ -22,6 +24,7 @@ const LogUser = async () => {
 export default function App() {
 
   const [ showOpening , setShowOpening ] = useState(true)
+  const [ showLogReg , setShowLogReg ] = useState(true)
 
   if (showOpening === true) {
     LogUser()
@@ -29,8 +32,9 @@ export default function App() {
   
   return (
     <>
-      <Opening set={setShowOpening} />
-      { !showOpening && <LoginSignup /> }
+      { showOpening && <Opening set={setShowOpening} /> }
+      { !showOpening && showLogReg && <LoginSignup set={setShowLogReg} /> }
+      { !showLogReg && <Home /> }
     </>
   );
 }

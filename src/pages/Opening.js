@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 const logo = require('../media/logo.png')
 
@@ -11,28 +10,19 @@ const Container = styled.div`
   align-items: center;
 `
 
-
-
-
 const Opening = (props) => {
 
-  
-
-  const [ show , setShow ] = useState(true)
-
   setTimeout(()=>{
-    setShow(false)
     props.set(false)
-  },1000)
+  },300)
 
-  if (show === true) {
-    return (
-      <Container>
-        <img src={logo} />
+  return (
+    <Container>
+      <img src={logo} />
 
-      </Container>
-    )
-  }
+    </Container>
+  )
+
 }
 
 

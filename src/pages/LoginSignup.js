@@ -12,33 +12,51 @@ const BadLogin = styled.div`
   font-weight: 500;
 `
 
-export default function LoginSignup() {
+const LoginSignup = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [ badLogin , setBadLogin ] = useState(false)
 
 
-  const handleLog = async function (res)  {
-    console.log('------- RES OF AXIOS',res);
-    if (res) {
+  const handleLog = (res) => {
+    if (res.status === 200) {
+      console.log('VALID USER');
+      props.set(false)
       // Store the credentials
-      await Keychain.setGenericPassword(email, password);
+      // await Keychain.setGenericPassword(email, password);
+    }
+    else if (res.status === 201) {
+      console.log('WRONG USERNAME OR PWD')
+    }
+    else if (res.status === 202) {
+      console.log('USERNAME DONT EXIST')
     }
   }
+
+  const handleReg = (res) => {
+    if (res.status === 200) {
+      console.log('NEW USER SIGNUP SUCCESS');
+      props.set(false)
+      // Store the credentials
+      // await Keychain.setGenericPassword(email, password);
+    }
+    else if (res.status === 201) {
+      console.log('USERNAME EXIST')
+    }
+    else if (res.status === 202) {
+      console.log('REGISTER FAIL')
+    }
+  }
+
+
   const handleAuth = () => {
-    if (isLogin) {
-      // Handle Login
-      axios.post('https://brr.com', {email:email , password:password})
-      .then((res)=> {handleLog(res)})
+      axios.post( isLogin ? 'http://127.0.0.1:5000/login' : 'http://127.0.0.1:5000/signup' , {username:email , password:password})
+      .then((res)=> { isLogin ? handleLog(res) : handleReg(res)  })
       .catch(function(err){
         console.log('Error signing in!');
         setBadLogin(true)
-
       })
-    } else {
-      // Handle Signup
-    }
   }
 
   return (
@@ -120,3 +138,7 @@ const styles = StyleSheet.create({
   },
 });
 
+
+
+
+export default LoginSignup ;
