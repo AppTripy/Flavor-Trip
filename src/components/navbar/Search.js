@@ -10,15 +10,15 @@ const Container = styled.div`
 `
 
 
-const Recipe = () => {
+const Search = () => {
 
 
   return (
-    <Container>
-      Recipe
+    <Container id="search" >
+      Search
     </Container>
   )
 }
 
 
-export default Recipe ;
+export default Search ;

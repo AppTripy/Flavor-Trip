@@ -2,10 +2,15 @@ import styled from "styled-components";
 import Profil from "./Profil";
 import Recipe from "./Recipe";
 import Search from "./Search";
+import Saved from "./Saved";
+
+import {dispatch} from '../../redux/store'
+import { setView } from '../../redux/viewSlice'
+
 
 const Container = styled.div`
   width: 100%;
-  height: 50px;
+  height: 7vh;
   position :absolute ;
   bottom: 0;
   border: 3px solid blue;
@@ -14,17 +19,19 @@ const Container = styled.div`
   justify-content: center;
   padding: 0 30px ;
   align-items: center;
-  gap:40px;
+  gap:30px;
 `
 
 const Navbar = () => {
 
+  
 
   return(
-    <Container>
-      <Profil />
-      <Recipe />
+    <Container onClick={(e)=>(dispatch(setView(e.target.id)))}>
       <Search />
+      <Recipe  />
+      <Saved />
+      <Profil />
     </Container>
   )
 }

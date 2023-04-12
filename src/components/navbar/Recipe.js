@@ -10,15 +10,15 @@ const Container = styled.div`
 `
 
 
-const Profil = () => {
+const Recipe = () => {
 
 
   return (
-    <Container>
-      Profil
+    <Container id="recipe" >
+      Recipe
     </Container>
   )
 }
 
 
-export default Profil ;
+export default Recipe ;
