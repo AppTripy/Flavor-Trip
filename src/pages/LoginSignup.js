@@ -1,14 +1,41 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import axios from 'axios';
+import styled from 'styled-components';
+import * as Keychain from 'react-native-keychain';
+
+const BadLogin = styled.div`
+  color: red;
+  text-align: center;
+  font-family: 'Arial';
+  font-size: 16 ; 
+  font-weight: 500;
+`
 
 export default function LoginSignup() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [ badLogin , setBadLogin ] = useState(false)
 
+
+  const handleLog = async function (res)  {
+    console.log('------- RES OF AXIOS',res);
+    if (res) {
+      // Store the credentials
+      await Keychain.setGenericPassword(email, password);
+    }
+  }
   const handleAuth = () => {
     if (isLogin) {
       // Handle Login
+      axios.post('https://brr.com', {email:email , password:password})
+      .then((res)=> {handleLog(res)})
+      .catch(function(err){
+        console.log('Error signing in!');
+        setBadLogin(true)
+
+      })
     } else {
       // Handle Signup
     }
@@ -38,12 +65,14 @@ export default function LoginSignup() {
           secureTextEntry
           onChangeText={setPassword}
         /> }
+        { badLogin && <BadLogin>Incorrect Password or Username </BadLogin> }
       </View>
       <TouchableOpacity style={styles.button} onPress={handleAuth}>
         <Text style={styles.buttonText}>{isLogin ? 'Login' : 'Signup'}</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => setIsLogin(!isLogin)}>
         <Text style={styles.switchText}>{isLogin ? 'Need an account? Signup' : 'Already have an account? Login'}</Text>
+        
       </TouchableOpacity>
     </View>
   );

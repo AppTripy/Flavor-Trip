@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 const logo = require('../media/logo.png')
 
+
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
@@ -15,11 +16,14 @@ const Container = styled.div`
 
 const Opening = (props) => {
 
+  
+
   const [ show , setShow ] = useState(true)
+
   setTimeout(()=>{
     setShow(false)
     props.set(false)
-  },2000)
+  },1000)
 
   if (show === true) {
     return (
